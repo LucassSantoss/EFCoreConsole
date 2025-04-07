@@ -8,6 +8,18 @@ using var db = new Context();
 db.Database.EnsureCreated();
 
 var filme = db.Filmes.Find(1);
+if (filme != null)
+{
+    // Edita o filme
+    // Diretor diretor = new Diretor() { Nome = "Lucas " };
+    // filme.Diretor = diretor;
+    
+    // Remove o filme
+    // db.Remove(filme);
+
+    // Salva as mudanças
+    db.SaveChanges();
+}
 
 // Lista todos os filmes
 var filmes = db.Filmes.ToList();
