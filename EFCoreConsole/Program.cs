@@ -9,11 +9,20 @@ using (var context = new Context())
 }
 
 using var db = new Context();
-// db.Add(new Filme {Titulo="Homem de ferro", Ano=2010});
-// db.SaveChanges();
 
-var filmes = db.Filmes.ToList();
-foreach (var filme in filmes)
+// Edita um dado do banco de dados
+var filme = db.Filmes.Find(1);
+if (filme != null)
 {
-    Console.WriteLine(filme.Titulo);
+    filme.Titulo = "Home de ferro 1";
+    filme.Diretor = new Diretor() { Nome = "Lucas" };
+}
+db.SaveChanges();
+
+// Lista todos os filmes
+var filmes = db.Filmes.ToList();
+foreach (var item in filmes)
+{
+    if (item != null)
+        Console.WriteLine($"{item.Id} {item.Titulo}");
 }
